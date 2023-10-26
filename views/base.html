@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <title>Main</title>
+</head>
+
+<body>
+  <div class="container-fluid vh-100">
+    <div class="row h-100">
+      <div class="d-none col-2 d-md-block " style="background-color:#0e2a56;">
+        <div class="row py-2" >
+          <div class="col-12 " style="height: 113px;">
+            <a class="navbar-brand "><img src="/img/logo.png" class="h-100 w-100" style="object-fit:contain;"></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mt-4">
+            <div class="d-grid gap-2">
+              <a href="/" class="btn  btn-outline-primary mt-4" >ÍNICO</a>
+              <a href="/cadastro-barragem" class="btn  btn-outline-primary mt-4">CADASTRAR BARRAGEM</a>
+              <a href="/barragens-cadastradas" class="btn  btn-outline-primary mt-4" >BARRAGENS CADASTRADAS</a>
+              <!--<a href="/cadastro-inspecao" class="btn  btn-outline-primary mt-4" >CADASTRAR INSPEÇÃO</a>
+              <a href="/cadastro-operador" class="btn  btn-outline-primary mt-4" >CADASTRAR OPERADOR</a>-->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="col-10">
+        <div class="row py-2 text-center " style="background-color: #0e2a56;">
+            
+          
+           
+        </div>
+        <div class="row">
+          <div class="col-12">
+            {% block conteudo %}
+            {% endblock %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    function consultarCEP() {
+        let cep = document.getElementById('cep').value;
+        $.ajax({
+            method: "GET",
+            url: `https://cdn.apicep.com/file/apicep/${cep}.json`
+        })
+            .done((dados) => {
+                document.getElementById('logradouro').value = dados.address;
+                document.getElementById('bairro').value = dados.district;
+                document.getElementById('cidade').value = dados.city;
+                document.getElementById('estado').value = dados.state;
+            })
+            .fail(() => {
+                alert('Não foi possível obter os dados a partir do CEP.')
+            });
+    }
+</script>
+</body>
+
+</html>

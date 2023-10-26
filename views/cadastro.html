@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+    CADASTRO BARRAGEM
+</div>
+
+<div class="container-fluid border border-primary-subtle m-2">
+    <form action="/cadastro-barragem" method="post" class="row g-3 needs-validation">
+        <div class="col-md-6 position-relative">
+            <label for="validationTooltip01" class="form-label"> Nome da Barragem</label>
+            <input type="text" class="form-control border border-primary" id="validationTooltip01" value=""
+                name="nomebarragem" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-2  position-relative">
+            <label for="validationTooltip02" class="form-label">Data de Construção</label>
+            <input type="date" class="form-control border border-primary" id="validationTooltip02" value=""
+                name="dataconst" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-2 position-relative">
+            <label for="validationTooltipUsername" class="form-label">Comprimento</label>
+            <div class="input-group has-validation">
+
+                <input type="text" class="form-control border border-primary" id="validationTooltipUsername"
+                    aria-describedby="validationTooltipUsernamePrepend" placeholder="0m">
+                
+            </div>
+        </div>
+        <div class="col-md-2 position-relative">
+            <label for="validationTooltipUsername" class="form-label">Altura Máxima</label>
+            <div class="input-group has-validation">
+
+                <input type="text" class="form-control border border-primary" id="validationTooltipUsername"
+                    aria-describedby="validationTooltipUsernamePrepend" placeholder="0m">
+                
+            </div>
+        </div>
+        <div class="col-md-2 position-relative">
+            <label for="validationTooltipUsername" class="form-label">Latitude</label>
+            <div class="input-group has-validation">
+
+                <input type="text" class="form-control border border-primary" id="validationTooltipUsername"
+                    aria-describedby="validationTooltipUsernamePrepend" placeholder="0°">
+                
+            </div>
+        </div>
+        <div class="col-md-2 position-relative">
+            <label for="validationTooltipUsername" class="form-label">Logitude</label>
+            <div class="input-group has-validation">
+
+                <input type="text" class="form-control border border-primary" id="validationTooltipUsername"
+                    aria-describedby="validationTooltipUsernamePrepend" placeholder="0°">
+                
+            </div>
+        </div>
+        
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltip03" class="form-label">CEP:</label>
+            <div class="input-group mb-3">
+                <input id="cep" type="text" class="form-control border border-primary" name="cep"
+                    placeholder="00000-000" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+                <button class="btn btn-outline-secondary" type="button" id="consultar-cep"
+                    onclick="consultarCEP();">Consultar</button>
+            </div>
+
+            <div class="invalid-tooltip">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip04" class="form-label">Rua</label>
+            <input type="text" class="form-control border border-primary" id="logradouro" required>
+            <div class="invalid-tooltip">
+                Please select a valid state.
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip05" class="form-label">Numero</label>
+            <input type="text" class="form-control border border-primary" id="numero" required>
+            <div class="invalid-tooltip">
+                Please provide a valid zip.
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip04" class="form-label">Bairro</label>
+            <input type="text" class="form-control border border-primary" id="bairro" required>
+            <div class="invalid-tooltip">
+                Please select a valid state.
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip05" class="form-label">Cidade</label>
+            <input type="text" class="form-control border border-primary" id="cidade" name="cidade" required>
+            <div class="invalid-tooltip">
+                Please provide a valid zip.
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip05" class="form-label">Estado</label>
+            <input type="text" class="form-control border border-primary" id="estado" required>
+            <div class="invalid-tooltip">
+                Please provide a valid zip.
+            </div>
+        </div>
+        <div class="col-mb-3">
+            <label for="validationTextarea" class="form-label">Complemento</label>
+            <textarea class="form-control border-primary" id="validationTextarea"></textarea>
+
+        </div>
+
+        <div class="col-12 m-2">
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            <button class="btn btn-danger" type="reset">Limpar</button>
+        </div>
+       
+</div>
+
+
+{% endblock %}
