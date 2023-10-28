@@ -15,20 +15,24 @@ nunjucks.configure('views', {
 app.use(bodyParser.urlencoded ({extended:false}));
 app.use(bodyParser.json());
 
-
-app.get('/login',function(req,res ,next){
+app.get('/login', (req,res,next)=>{
     res.render('login.html');
-});
+})
 
-app.get('/',function(req,res, next){
-    res.render('index.html');
+
+
+app.get('/',async(req,res, next)=>{
+    let resultado = await bd.query('select * from usuarios');
+    resultado = resultado[0];
+    console.log(resultado);
+    res.render('index.html',{usuarios: resultado});
 });
 
 app.get('/cadastro-barragem', (req,res,next)=>{
     res.render('cadastro.html');
 })
 
-app.get('/cadastro-inspecao', (req,res,next)=>{
+app.get('/cadastro-inspecao', async(req,res,next)=>{
     res.render('tabelas.html');
 })
 
@@ -41,7 +45,7 @@ app.get('/barragens-cadastradas',async (req,res,next)=>{
 })
 
 app.get('/cadastro-operador', (req,res,next)=>{
-    res.render('cadastroOperador.html');
+    res.render('pesquisa-insp.html');
 })
 
 app.post('/cadastro-barragem', async (req,res,next)=>{
@@ -50,9 +54,20 @@ app.post('/cadastro-barragem', async (req,res,next)=>{
     let resultado = await bd.query('insert into barragens (nome,localizacao) values (?,?)',[dados.nomebarragem,dados.cidade]);
     let id = resultado[0].insertId;
     console.log(id);
-   res.redirect(`/barragens-cadastradas`);
+    res.redirect(`/barragens-cadastradas`);
+   
 })
 
+app.post('/login', async(req,res ,next)=>{
+    console.log(req.body);
+    let dados = req.body;
+    let resultado = await bd.query('insert into usuarios (nome,funcao) values (?,?)',[dados.nomeuser,dados.funcaouser]);
+    let id = resultado[0].insertId;
+    console.log(id);
+    res.redirect('/');
+   
+ 
+ });
 
 
 app.listen(8080,function(){

@@ -20,6 +20,7 @@ CREATE TABLE barragens (
 id INT primary key auto_increment,
 nome varchar(64) NOT NULL,
 localizacao VARCHAR(64) NOT NULL
+
 );
 
 CREATE TABLE sistemas (
@@ -148,8 +149,4 @@ SELECT sistemas.nome, subsistemas.nome, parametros.*
 FROM parametros, sistemas, subsistemas
 WHERE parametros.id_sistema = sistemas.id AND parametros.id_subsistema = subsistemas.id_subsistema;
 select * from barragens;
-delete from barragens where id=1;
-delete from barragens where id=2;
-delete from barragens where id=3;
-delete from barragens where id=4;
-delete from barragens where id=5;
+
