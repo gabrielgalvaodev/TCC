@@ -9,9 +9,8 @@ CREATE DATABASE IF NOT EXISTS tcc;
  
 CREATE TABLE usuarios (
 id INT primary KEY auto_increment,
-email varchar(128) NOT NULL unique,
-senha char(64) NOT NULL,
-nome varchar(64) NOT NULL
+nome varchar(64) NOT NULL,
+funcao varchar(64) not null
 );
 
 select * from usuarios;
@@ -149,4 +148,6 @@ SELECT sistemas.nome, subsistemas.nome, parametros.*
 FROM parametros, sistemas, subsistemas
 WHERE parametros.id_sistema = sistemas.id AND parametros.id_subsistema = subsistemas.id_subsistema;
 select * from barragens;
+select * from avaliacoes;
+select * from parametros;
 

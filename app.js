@@ -69,6 +69,22 @@ app.post('/login', async(req,res ,next)=>{
  
  });
 
+ app.post('/cadastro-inspecao', async(req,res ,next)=>{
+    console.log(req.body);
+    let dados = req.body;
+    await bd.query('insert into avaliacoes (,) values (?,?)',[dados.nomeuser,dados.funcaouser]);
+  
+    
+    res.redirect('/cadastro-inspecao');
+   
+ 
+ });
+
+
+
+
+ 
+
 
 app.listen(8080,function(){
     console.log("App rodando");
