@@ -72,7 +72,9 @@ app.post('/login', async(req,res ,next)=>{
  app.post('/cadastro-inspecao', async(req,res ,next)=>{
     console.log(req.body);
     let dados = req.body;
-    await bd.query('insert into avaliacoes (,) values (?,?)',[dados.nomeuser,dados.funcaouser]);
+    await bd.query
+    ('insert into avaliacoes (id_avaliacoes,id_barragem,id_parametros,id_sistema,id_subsistema,data_hora,si,oi,di,rpni) values (1,1,1,1,1,?,?,?,?,?)',
+    [dados.Si_1,dados.Oi_1,dados.Di_1]);
   
     
     res.redirect('/cadastro-inspecao');
