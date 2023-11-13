@@ -50,17 +50,16 @@ constraint foreign key (id_sistema,id_subsistema) references subsistemas (id_sis
 );
 
 CREATE TABLE avaliacoes (
-id_avaliacao int not null,
 id_barragem int not null,
+data_hora TIMESTAMP NOT NULL,
 id_parametros INT not null,
 id_sistema int not null,
 id_subsistema INT not null,
-data_hora TIMESTAMP NOT NULL,
 si int not null,
 oi int not null,
 di int not null,
 rpni int not null,
-constraint primary key (id_barragem, id_sistema, id_subsistema, id_parametros, id_avaliacao),
+constraint primary key (id_barragem,data_hora, id_sistema, id_subsistema, id_parametros),
 constraint foreign key (id_barragem) references barragens (id),
 constraint foreign key (id_sistema,id_subsistema, id_parametros) references parametros (id_sistema, id_subsistema, id_parametros) 
 );
