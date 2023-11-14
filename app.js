@@ -108,6 +108,10 @@ app.post('/login', async(req,res ,next)=>{
     await bd.query
     ('insert into avaliacoes (id_barragem,id_parametros,id_sistema,id_subsistema,data_hora,si,oi,di,rpni) values (1,12,1,4,now(),?,?,?,?)',
     [Number(dados.Si_6),Number(dados.Oi_6),Number(dados.Di_12), Number(dados.Si_6) * Number(dados.Oi_6) * Number(dados.Di_12)]);
+
+    await bd.query
+    ('insert into avaliacoes (id_barragem,id_parametros,id_sistema,id_subsistema,data_hora,si,oi,di,rpni) values (1,13,2,1,now(),?,?,?,?)',
+    [Number(dados.Si_6),Number(dados.Oi_6),Number(dados.Di_12), Number(dados.Si_6) * Number(dados.Oi_6) * Number(dados.Di_12)]);
     
     
     
